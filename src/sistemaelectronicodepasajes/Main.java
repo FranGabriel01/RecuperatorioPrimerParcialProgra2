@@ -40,10 +40,17 @@ public class Main {
     private static void registrarViaje(){
         String nombrePasajero = leerTextoSeguro("Nombre del pasajero: ");
         
-        System.out.println("Tipo vehiculo 1-Colectivo 2-Tren 3-Subte");
-        int tipoVehiculo = leerEnteroSeguro("Ingrese opcion: ");
-        String patente = leerTextoSeguro("Ingrese la patento: ");
-        int capacidad = leerEnteroSeguro("Capacidad; ");
+        int tipoVehiculo;
+        do{
+            tipoVehiculo = leerEnteroSeguro("Tipo vehiculo \n1-Colectivo \n2-Tren \n3-Subte");
+            if(tipoVehiculo < 1 || tipoVehiculo > 3){
+                System.out.println("Opcion invalida");
+            }
+        }while(tipoVehiculo < 1 || tipoVehiculo > 3);
+        String patente = leerTextoSeguro("Ingrese la patente: ");
+        
+        int capacidad = leerEnteroSeguro("Capacidad ");
+        
         String empresa = leerTextoSeguro("Empresa: ");
         VehiculoTransporte vehiculo;
         
@@ -57,10 +64,14 @@ public class Main {
                 }
         }
         
-        System.out.println("Tipo de pasaje 1-Comun, 2-Estudiante, 3-Junilado: ");
-        int tipoPasaje = leerEnteroSeguro("Ingrese opcion: ");
-        Pasaje pasaje;
-           
+        int tipoPasaje;
+        do{
+            tipoPasaje = leerEnteroSeguro("Tipo de pasaje \n1-Comun \n2-Estudiante \n3-Junilado:");
+            if(tipoPasaje < 1 || tipoPasaje > 3){
+                System.out.println("Opcion invalida");
+            }
+        }while(tipoPasaje < 1 || tipoPasaje > 3);
+        Pasaje pasaje;           
         switch (tipoPasaje) {
                 case 1 -> pasaje = new PasajeComun();
                 case 2 -> pasaje = new PasajeEstudiante();
